@@ -1,6 +1,6 @@
-"""Jarri Claude history service: lists earlier Claude Code sessions over localhost HTTP.
+"""Claude history: lists earlier Claude Code sessions over localhost HTTP.
 
-Backend only. Jarri's Claude history panel is a client of this service.
+Runs on its own with `python3 server.py`. Any client can use it, a panel in Jarri is optional.
 
 Endpoints (JSON):
   GET /sessions -> [{id, title, cwd, messages, modified}, ...], newest first
@@ -185,7 +185,7 @@ class Handler(BaseHTTPRequestHandler):
 
 def main():
     server = ThreadingHTTPServer((HOST, PORT), Handler)
-    print(f"jarri claude history service on http://{HOST}:{PORT}", file=sys.stderr)
+    print(f"claude history service on http://{HOST}:{PORT}", file=sys.stderr)
     server.serve_forever()
 
 
